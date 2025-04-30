@@ -1,0 +1,33 @@
+.PHONY: help
+help: ## コマンドの一覧を表示する
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
+
+.PHONY: deps
+deps: ## 必要なパッケージを仮想環境にインストールする
+	@echo ">> パッケージのインストールを開始します..."
+	bin/install_py_packages.sh
+
+.PHONY: run
+run: ## main.pyを実行する
+	python -m main
+
+.PHONY: build
+build: ## 配布可能なexeに変換する
+	@echo ">> ビルドを開始します..."
+	python -m nuitka --standalone --onefile --output-dir=dist --follow-imports main.py --output-filename="set-app-name"
+	@echo ">> ビルドが完了しました!distディレクトリを確認してください"
+
+.PHONY: lint
+lint: ## Linter(Ruff)を実行
+	@echo ">> Linterを実行します..."
+	ruff check
+
+.PHONY: fix
+fix: ##  Formatter(Ruff)を実行
+	@echo ">> Linterを実行します..."
+	ruff check --fix
+
+.PHONY: lint-fix
+lint-fix:
+	make lint
+	make fix

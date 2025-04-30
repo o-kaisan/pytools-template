@@ -1,0 +1,11 @@
+{
+    "python.testing.pytestArgs": [
+        "test"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "ruff.configuration": ".ruff.toml",
+    "cSpell.words": [
+        "dotenv"
+    ],
+}
