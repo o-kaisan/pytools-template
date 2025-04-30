@@ -1,0 +1,85 @@
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    # デフォルト
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".__pycache__",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+
+    # 追加
+    ".ruff.toml",
+    "bin"
+]
+
+# １行の最大文字数
+line-length = 300 # 可読性が下がるので多めに設定
+# インデント幅
+indent-width = 4
+
+# Assume Python 3.12
+target-version = "py312"
+
+[lint]
+# 全てのルールを有効にして不要なのを消す
+select = ["ALL"]
+ignore = [
+    "G004", # `logging-f-string` : loggingでf-stringを使いたいので無視する
+    "RUF001", # 全角記号など`ambiguous unicode character`も使いたいため
+    "RUF002",# 全角記号など`ambiguous unicode character`も使いたいため
+    "RUF003",# 全角記号など`ambiguous unicode character`も使いたいため
+    "ERA", # 役立つこともあるが、コメントアウトしていないコードも警告されるので無視する
+    "D100", # undocumented-public-module. モジュールのdocstringは書かないため
+    "D104", # undocumented-public-package. __init__.pyにはdocstringを書かないため
+    "PLC2401", # Function name non-ASCII character. 日本語のテストケースが書きたいため
+    "F401", # unused-import. __init__.pyでモジュールをインポートしたいため
+]
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+# タスクタグ
+task-tags = ["TODO"] # TODOコメントはコードチェックで無視される
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+# Enable auto-formatting of code examples in docstrings. Markdown,
+docstring-code-format = true
+docstring-code-line-length = "dynamic"
