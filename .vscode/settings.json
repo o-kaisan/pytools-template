@@ -10,4 +10,5 @@
         "nuitka",
         "pytest"
     ],
+    "docwriter.style": "Google",
 }
