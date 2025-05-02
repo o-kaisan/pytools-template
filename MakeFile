@@ -11,7 +11,7 @@ deps: ## 必要なパッケージを仮想環境にインストールする
 deps-ci: ## CI環境用に仮想環境かどうか関係なくパッケージをインストールする
 	@echo ">> パッケージのインストールを開始します..."
 	python -m pip install --upgrade pip
-    python -m pip install -r requirements.txt
+#     python -m pip install -r requirements.txt
 
 .PHONY: version
 version: ## アプリケーションのバージョンを出力する
@@ -34,7 +34,7 @@ lint: ## Linter(Ruff)を実行
 	ruff check
 
 .PHONY: fix
-fix: ##  Formatter(Ruff)を実行
+fix: ## Formatter(Ruff)を実行
 	@echo ">> Linterを実行します..."
 	ruff check --fix
 
@@ -46,3 +46,4 @@ lint-fix:
 .PHONY: test
 test:
 	pytest .
+
