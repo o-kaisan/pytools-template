@@ -6,6 +6,9 @@
     "python.testing.pytestEnabled": true,
     "ruff.configuration": ".ruff.toml",
     "cSpell.words": [
-        "dotenv"
+        "dotenv",
+        "nuitka",
+        "pytest"
     ],
+    "docwriter.style": "Google",
 }
